@@ -51,20 +51,21 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- User Login, Logout, Register
+- Send a receive messages in a channel
+- View previous messages
+- View the online status of other users
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - 3 different views, Login/register, Channels, Messages
+- **CSS** - Responsive design, clean user interface
+- **React** - Interactive message sending, channel switching, routing between pages
+- **Service** - REST API for auth, channels, message history, third-party call for a daily quote
+- **DB/Login** - Store users, channels, messages
+- **WebSocket** - Real-time message delivery, online status
 
 ## 🚀 AWS deliverable
 
