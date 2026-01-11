@@ -1,0 +1,7 @@
+{
+  "remoteURL": "git@github.com:pr3ston/startup.git",
+  "gitLocation": "",
+  "syncinterval": 0,
+  "isSyncOnLoad": false,
+  "checkStatusOnLoad": true
+}
