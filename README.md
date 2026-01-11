@@ -26,7 +26,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Communication is key to a successful team. With Yap, sharing messages couldn't be easier. Join channels, start chatting, and see your team's activity in real-time—all in one simple platform.
+Communication is key to a successful team. With Yap, sharing messages couldn't be easier. Join channels, start chatting, and see your team's activity in real-time, all in one simple platform.
 
 ### Design
 
