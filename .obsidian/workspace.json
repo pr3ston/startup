@@ -180,9 +180,17 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "github-sync:Sync with Remote": false
     }
   },
   "active": "6ef4cea4218eaee4",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Pictures/sampletext.png",
+    "Pictures/channels.png",
+    "Pictures/homepage.png",
+    "README.md",
+    "Pictures",
+    "desktop.ini"
+  ]
 }
