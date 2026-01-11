@@ -36,9 +36,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    actor User
+    User->>Login: Enter credentials
+    Login->>Channels: View channel list
+    Channels->>Chat: Select channel
+    Chat->>Chat: Send messages
+    Chat->>Chat: Receive real-time messages
+    Chat->>Chat: View online users
+    Chat->>Channels: Switch to different channel
+    Channels->>Chat: Join new channel
+    Chat-->>Login: Logout
+    Login-->>User: Return to login page
 ```
 
 ### Key features
