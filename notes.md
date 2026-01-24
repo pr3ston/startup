@@ -73,6 +73,15 @@ Block elements are meant to be a distinct block in the flow of content. An inlin
 |file|	Local file|
 |submit|	button to trigger form submission|
 
+##### Attributes
+
+|Attribute|	Meaning|
+|---|---|
+|name|	The name of the input. This is submitted as the name of the input if used in a form|
+|disabled|	Disables the ability for the user to interact with the input|
+|value|	The initial value of the input|
+|required|	Signifies that a value is required in order to be valid|
+
 ## CSS
 
 This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
