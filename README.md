@@ -78,7 +78,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Links** - I have links that switch between different pages/views.
 - [x] **Text** - Almost all pages have text, especially the about page.
 - [x] **3rd party API placeholder** - About page has an "inspirational quote".
-- [ ] **Images** - I did not complete this part of the deliverable.
+- [x] **Images** - I have an app logo on my about page.
 - [x] **Login placeholder** - I have a login form that takes in a username and password.
 - [x] **DB data placeholder** - I have place holder data that represents the different messages and times for each channel.
 - [x] **WebSocket placeholder** - I have a place holder for the "status" data for a user and the real time message data.
