@@ -1,6 +1,6 @@
 # CS 260 Notes
 
-[My startup - Simon](https://simon.cs260.click)
+[My startup - Simon](https://simon.pviloria.click)
 
 ## Helpful links
 
@@ -19,9 +19,39 @@ No problems worked just like it said in the [instruction](https://github.com/web
 
 ## HTML
 
-This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
+### Structure
 
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+The `<body>` tag is the top level for content. `<header>, <main>, <footer>` are all children of the body tags.
+
+`<header>`:
+Contains a `<p>` paragracph, with a `<span>` and a `<nav>` containing multiple `<div>`isons
+
+`<main>`:
+Contains multiple `<section>`s and contain either an unordered list or a `<table>`. Also contains an `<aside>` for content that doesn't fit the content flow of the sections.
+
+`<footer>`:
+Has a `<div>` with a single `<span>`
+
+#### Block and Inline
+
+Block elements are meant to be a distinct block in the flow of content. An inline element is meant to be inline with the content flow for a block element. Inline elements don't disrupt the flow of blow element's conent. 
+
+### Input
+
+
+|Element|	Meaning|	Example|
+|---|---|---|
+|form|	Input container and submission|	<form action="form.html" method="post">|
+|fieldset|	Labeled input grouping	|<fieldset> ... </fieldset>|
+|input|	Multiple types of user input|	<input type="" />|
+|select|	Selection dropdown|	<select><option>1</option></select>|
+|optgroup|	Grouped selection dropdown|	<optgroup><option>1</option></optgroup>|
+|option|	Selection option|	<option selected>option2</option>|
+|textarea|	Multiline text input|	<textarea></textarea>|
+|label|	Individual input label	|<label for="range">Range: </label>|
+|output|	Output of input|	<output for="range">0</output>|
+|meter|	Display value with a known range|	<meter min="0" max="100" value="50"></meter>|
+
 
 ## CSS
 
