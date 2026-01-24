@@ -52,6 +52,26 @@ Block elements are meant to be a distinct block in the flow of content. An inlin
 |output|	Output of input|	`<output for="range">0</output>`|
 |meter|	Display value with a known range|	`<meter min="0" max="100" value="50"></meter>`|
 
+#### Input Element
+
+|Type|	Meaning|
+|---|---|
+|text|	Single line textual value|
+|password|	Obscured password|
+|email|	Email address|
+|tel|	Telephone number|
+|url|	URL address|
+|number|	Numerical value|
+|checkbox|	Inclusive selection|
+|radio|	Exclusive selection|
+|range|	Range limited number|
+|date|	Year, month, day|
+|datetime-local|	Date and time|
+|month|	Year, month|
+|week|	Week of year|
+|color|	Color|
+|file|	Local file|
+|submit|	button to trigger form submission|
 
 ## CSS
 
