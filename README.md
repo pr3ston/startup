@@ -73,15 +73,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - 4 pages: login, register, about, channels.
+- [x] **Proper HTML element usage** - I used different elements like body, input, articles, sections, etc.
+- [x] **Links** - I have links that switch between different pages/views.
+- [x] **Text** - Almost all pages have text, especially the about page.
+- [x] **3rd party API placeholder** - About page has an "inspirational quote".
 - [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **Login placeholder** - I have a login form that takes in a username and password.
+- [x] **DB data placeholder** - I have place holder data that represents the different messages and times for each channel.
+- [x] **WebSocket placeholder** - I have a place holder for the "status" data for a user and the real time message data.
 
 ## 🚀 CSS deliverable
 
