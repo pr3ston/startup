@@ -1,0 +1,16 @@
+header {
+  padding: 10px 20px;
+}
+
+main {
+    padding: 10px;
+    flex: 1 calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  padding: 10px;
+  text-align: center;
+}

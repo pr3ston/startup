@@ -1,15 +1,19 @@
 <!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="about-styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
 <body>
    <header>
-      <h1>Yapp</h1>
-      <nav>
-         <ul>
-         <li><a href="index.html">Login</a></li>
-         <li><a href="channels.html">Channels</a></li>
-         </ul>
-      </nav>
-      <hr />
-   </header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li><a class="navbar-brand">Yapp</a></li>
+      <li><a class="nav-link" href="index.html">Login</a></li>
+      <li><a class="nav-link" href="channels.html">Channels</a></li>
+     </ul>
+    </nav>
+  </header>
    <main>
       <img width="400px"src="yapp.png" alt="Yapp Logo" />
       <h1>About Yapp</h1>
@@ -21,7 +25,9 @@
          <li>View previous messages</li>
          <li>View the online status of other users</li>
       </ul>
-      <p>We hope you enjoy using Yapp!</p>
+      <br>
+      <strong><p>We hope you enjoy using Yapp!</p></strong>
+      <br>
       <div id="quote">
         <div>This is an inspiration quote.</div>
         <div>- Preston Viloria</div>
