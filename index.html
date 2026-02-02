@@ -15,17 +15,21 @@
     </nav>
   </header>
   <main>
-    <h1>Welcome to Yapp</h1>
+    <div class="form-div">
     <form method="post" action="channels.html">
-      <div>
-        <input type="text" placeholder="your@email.com" />
+      <h1>Welcome to Yapp</h1>
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Username</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username">
       </div>
-      <div>
-        <input type="password" placeholder="password" />
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Password</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password">
       </div>
       <button type="submit">Login</button>
+      <a href="register.html">Register</a>
     </form>
-    <a href="register.html">Register</a>
+    </div>
   </main>
   <footer>
     <hr />
