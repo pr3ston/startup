@@ -3,7 +3,7 @@ import "./about-styles.css";
 
 export function About() {
   return (
-    <main>
+    <main className="about-main">
       <img width="400px" src="yapp.png" alt="Yapp Logo" />
       <h1>About Yapp</h1>
       <p>

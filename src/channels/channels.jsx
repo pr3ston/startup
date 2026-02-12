@@ -3,12 +3,12 @@ import "./channel-styles.css";
 
 export function Channels() {
   return (
-    <main>
-      <section>
+    <main className="container-fluid">
+      <section className="current-user">
         <h2>Current User: Bob</h2>
         <hr />
       </section>
-      <section>
+      <section className="channel-list">
         <h2>Channels</h2>
         <article>
           <h3>Alice</h3>
@@ -32,17 +32,17 @@ export function Channels() {
           <time> 10:30 AM</time>
         </article>
       </section>
-      <section>
+      <section className="current-channel">
         <span>
           <h2>Alice</h2> online
         </span>
-        <p class="message other">
+        <p className="message other">
           <strong>Alice:</strong> Hello everyone!<time> 10:30 AM</time>
         </p>
-        <p class="message self">
+        <p className="message self">
           <strong>Bob:</strong> Hi Alice!<time> 10:30 AM</time>
         </p>
-        <p class="message other">
+        <p className="message other">
           <strong>Alice:</strong> How are you?<time> 10:30 AM</time>
         </p>
         <form method="post" action="channels.html">

@@ -2,13 +2,12 @@ header {
   padding: 10px 20px;
 }
 
-
 body {
-  margin: 0;                 
-  background-color: #f9f9f9; 
+  margin: 0;
+  background-color: #f9f9f9;
 }
 
-form {
+.credential-form {
   flex: 1 calc(100vh - 110px);
   display: flex;
   flex-direction: column;
@@ -17,11 +16,19 @@ form {
   border-color: black;
 }
 
-form a {
+.register-link {
   align-items: center;
 }
 
 footer {
   padding: 10px;
   text-align: center;
+}
+
+.login-main {
+  flex: 1 calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }

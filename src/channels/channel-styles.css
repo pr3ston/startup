@@ -22,13 +22,14 @@ main {
   grid-template-rows: auto 1fr;
   gap: 10px;
   padding: 10px;
+  width: 100%;
 }
 
-main section:nth-of-type(1) {
+.current-user {
   grid-column: 1 / 3;
 }
 
-main section:nth-of-type(2) {
+.channel-list {
   grid-column: 1;
   grid-row: 2;
   border-right: 1px solid #ddd;
@@ -38,7 +39,7 @@ main section:nth-of-type(2) {
   grid-template-columns: 1fr;
 }
 
-main section:nth-of-type(3) {
+.current-channel {
   grid-column: 2;
   grid-row: 2;
   display: flex;

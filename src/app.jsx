@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "/index-styles.css";
+//import "/index-styles.css";
+// import "./channels/channel-styles.css";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { Login } from "./login/login";
 import { Register } from "./register/register";
@@ -51,7 +52,7 @@ export default function App() {
 
         <footer>
           <hr />
-          <span class="text-reset">Author Name(s): Preston Viloria</span>
+          <span className="text-reset">Author Name: Preston Viloria</span>
           <br />
           <a href="https://github.com/pr3ston/startup/tree/main">GitHub</a>
         </footer>
@@ -62,7 +63,7 @@ export default function App() {
 
 function NotFound() {
   return (
-    <main className="container-fluid bg-secondary text-center">
+    <main className="container-fluid bg-secondary">
       404: Return to sender. Address unknown.
     </main>
   );

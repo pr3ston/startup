@@ -3,28 +3,28 @@ import "../../index-styles.css";
 
 export function Register() {
   return (
-    <main>
-      <div class="form-div">
-        <form method="post" action="channels.html">
+    <main className="login-main">
+      <div className="form-div">
+        <form method="post" action="channels.html" className="credential-form">
           <h1>Register for Yapp</h1>
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">
+          <div className="mb-3">
+            <label for="formGroupExampleInput" className="form-label">
               Username
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="formGroupExampleInput"
               placeholder="Username"
             />
           </div>
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">
+          <div className="mb-3">
+            <label for="formGroupExampleInput2" className="form-label">
               Password
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="formGroupExampleInput2"
               placeholder="Password"
             />
