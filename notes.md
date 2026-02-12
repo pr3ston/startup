@@ -34,53 +34,52 @@ Has a `<div>` with a single `<span>`
 
 #### Block and Inline
 
-Block elements are meant to be a distinct block in the flow of content. An inline element is meant to be inline with the content flow for a block element. Inline elements don't disrupt the flow of blow element's conent. 
+Block elements are meant to be a distinct block in the flow of content. An inline element is meant to be inline with the content flow for a block element. Inline elements don't disrupt the flow of blow element's conent.
 
 ### Input
 
-
-|Element|	Meaning|	Example|
-|---|---|---|
-|form|	Input container and submission|	`<form action="form.html" method="post">`|
-|fieldset|	Labeled input grouping	|`<fieldset> ... </fieldset>`|
-|input|	Multiple types of user input|	`<input type="" />`|
-|select|	Selection dropdown|	`<select><option>1</option></select>`|
-|optgroup|	Grouped selection dropdown|	`<optgroup><option>1</option></optgroup>`|
-|option|	Selection option|	`<option selected>option2</option>`|
-|textarea|	Multiline text input|	`<textarea></textarea>`|
-|label|	Individual input label	|`<label for="range">Range: </label>`|
-|output|	Output of input|	`<output for="range">0</output>`|
-|meter|	Display value with a known range|	`<meter min="0" max="100" value="50"></meter>`|
+| Element  | Meaning                          | Example                                        |
+| -------- | -------------------------------- | ---------------------------------------------- |
+| form     | Input container and submission   | `<form action="form.html" method="post">`      |
+| fieldset | Labeled input grouping           | `<fieldset> ... </fieldset>`                   |
+| input    | Multiple types of user input     | `<input type="" />`                            |
+| select   | Selection dropdown               | `<select><option>1</option></select>`          |
+| optgroup | Grouped selection dropdown       | `<optgroup><option>1</option></optgroup>`      |
+| option   | Selection option                 | `<option selected>option2</option>`            |
+| textarea | Multiline text input             | `<textarea></textarea>`                        |
+| label    | Individual input label           | `<label for="range">Range: </label>`           |
+| output   | Output of input                  | `<output for="range">0</output>`               |
+| meter    | Display value with a known range | `<meter min="0" max="100" value="50"></meter>` |
 
 #### Input Element
 
-|Type|	Meaning|
-|---|---|
-|text|	Single line textual value|
-|password|	Obscured password|
-|email|	Email address|
-|tel|	Telephone number|
-|url|	URL address|
-|number|	Numerical value|
-|checkbox|	Inclusive selection|
-|radio|	Exclusive selection|
-|range|	Range limited number|
-|date|	Year, month, day|
-|datetime-local|	Date and time|
-|month|	Year, month|
-|week|	Week of year|
-|color|	Color|
-|file|	Local file|
-|submit|	button to trigger form submission|
+| Type           | Meaning                           |
+| -------------- | --------------------------------- |
+| text           | Single line textual value         |
+| password       | Obscured password                 |
+| email          | Email address                     |
+| tel            | Telephone number                  |
+| url            | URL address                       |
+| number         | Numerical value                   |
+| checkbox       | Inclusive selection               |
+| radio          | Exclusive selection               |
+| range          | Range limited number              |
+| date           | Year, month, day                  |
+| datetime-local | Date and time                     |
+| month          | Year, month                       |
+| week           | Week of year                      |
+| color          | Color                             |
+| file           | Local file                        |
+| submit         | button to trigger form submission |
 
 ##### Attributes
 
-|Attribute|	Meaning|
-|---|---|
-|name|	The name of the input. This is submitted as the name of the input if used in a form|
-|disabled|	Disables the ability for the user to interact with the input|
-|value|	The initial value of the input|
-|required|	Signifies that a value is required in order to be valid|
+| Attribute | Meaning                                                                             |
+| --------- | ----------------------------------------------------------------------------------- |
+| name      | The name of the input. This is submitted as the name of the input if used in a form |
+| disabled  | Disables the ability for the user to interact with the input                        |
+| value     | The initial value of the input                                                      |
+| required  | Signifies that a value is required in order to be valid                             |
 
 ## CSS
 
@@ -90,7 +89,7 @@ With bootstrap, you just essentially 'plug and play' as the css classes are alre
 
 ## React Part 1: Routing
 
-Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
+Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS, which was a pain. I ended us using more specific classes to help separate the css files. I have also sorted my files accordingly.
 
 ## React Part 2: Reactivity
 
