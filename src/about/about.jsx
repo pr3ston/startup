@@ -4,7 +4,7 @@ import "./about-styles.css";
 export function About() {
   return (
     <main className="about-main">
-      <img width="400px" src="yapp.png" alt="Yapp Logo" />
+      <img width="400px" src="/yapp.png" alt="Yapp Logo" />
       <h1>About Yapp</h1>
       <p>
         Yapp is a simple chat application that allows users to communicate in

@@ -1,5 +1,6 @@
 import React from "react";
 import "/index-styles.css";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 export function Login() {
   return (
@@ -30,9 +31,9 @@ export function Login() {
             />
           </div>
           <button type="submit">Login</button>
-          <a href="register.html" className="register-link">
+          <NavLink to="/register" className="register-link">
             Register
-          </a>
+          </NavLink>
         </form>
       </div>
     </main>
