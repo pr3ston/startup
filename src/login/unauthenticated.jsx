@@ -25,7 +25,7 @@ export function Unauthenticated(props) {
             id="formGroupExampleInput"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            placeholder="username"
+            placeholder="Username"
           />
         </div>
         <div className="mb-3">
@@ -34,7 +34,7 @@ export function Unauthenticated(props) {
             type="text"
             onChange={(e) => setPassword(e.target.value)}
             id="formGroupExampleInput2"
-            placeholder="username"
+            placeholder="Password"
           />
         </div>
         <Button
