@@ -30,11 +30,6 @@ export default function App() {
                   Login
                 </NavLink>
               </li>
-              <li>
-                <NavLink className="nav-link" to="/register">
-                  Register
-                </NavLink>
-              </li>
               {authState === AuthState.Authenticated && (
                 <li>
                   <NavLink className="nav-link" to="/channels">
@@ -66,7 +61,6 @@ export default function App() {
             }
             exact
           />
-          <Route path="/register" element={<Register />} />
           <Route path="/channels" element={<Channels />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />

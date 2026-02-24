@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import "./authenticated.css";
 
 export function Authenticated(props) {
   const navigate = useNavigate();
@@ -11,7 +13,7 @@ export function Authenticated(props) {
 
   return (
     <div>
-      <div className="playerName">{props.userName}</div>
+      <div className="playerName">Current User: {props.userName}</div>
       <Button variant="primary" onClick={() => navigate("/channels")}>
         Message
       </Button>
