@@ -4,7 +4,7 @@ import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { Authenticated } from "./authenticated";
 import { AuthState } from "./authState";
 
-export function Login() {
+export function Login({ userName, authState, onAuthChange }) {
   return (
     <main className="login-main">
       <div className="form-div">
