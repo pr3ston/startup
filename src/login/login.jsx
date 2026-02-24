@@ -1,6 +1,8 @@
 import React from "react";
 import "/index-styles.css";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { Authenticated } from "./authenticated";
+import { AuthState } from "./authState";
 
 export function Login() {
   return (
