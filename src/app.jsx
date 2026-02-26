@@ -61,7 +61,7 @@ export default function App() {
             }
             exact
           />
-          <Route path="/channels" element={<Channels />} />
+          <Route path="/channels" element={<Channels userName={userName} />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

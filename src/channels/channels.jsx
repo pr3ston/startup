@@ -1,11 +1,11 @@
 import React from "react";
 import "./channel-styles.css";
 
-export function Channels() {
+export function Channels({ userName }) {
   return (
     <main className="container-fluid">
       <section className="current-user">
-        <h2>Current User: Bob</h2>
+        <h2>Current User: {userName}</h2>
         <hr />
       </section>
       <section className="channel-list">
