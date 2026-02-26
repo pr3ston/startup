@@ -1,7 +1,23 @@
 import React from "react";
 import "./channel-styles.css";
+import Button from "react-bootstrap/Button";
 
 export function Channels({ userName }) {
+  const [messages, setMessages] = React.useState([]);
+
+  React.useEffect(() => {
+    GameNotifier.addHandler(handleGameEvent);
+
+    return () => {
+      GameNotifier.removeHandler(handleGameEvent);
+    };
+  });
+
+  function handleMessageEvent(message) {
+    let newMessages = [message, ...message];
+    setMessages(newMessages);
+  }
+
   return (
     <main className="container-fluid">
       <section className="current-user">
@@ -40,7 +56,7 @@ export function Channels({ userName }) {
           <strong>Alice:</strong> Hello everyone!<time> 10:30 AM</time>
         </p>
         <p className="message self">
-          <strong>Bob:</strong> Hi Alice!<time> 10:30 AM</time>
+          <strong>You:</strong> Hi Alice!<time> 10:30 AM</time>
         </p>
         <p className="message other">
           <strong>Alice:</strong> How are you?<time> 10:30 AM</time>
@@ -53,3 +69,5 @@ export function Channels({ userName }) {
     </main>
   );
 }
+
+// TODO: Change the button to be like that of the unauthenticated.jsx
