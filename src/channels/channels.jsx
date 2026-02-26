@@ -3,21 +3,6 @@ import "./channel-styles.css";
 import Button from "react-bootstrap/Button";
 
 export function Channels({ userName }) {
-  const [messages, setMessages] = React.useState([]);
-
-  React.useEffect(() => {
-    GameNotifier.addHandler(handleGameEvent);
-
-    return () => {
-      GameNotifier.removeHandler(handleGameEvent);
-    };
-  });
-
-  function handleMessageEvent(message) {
-    let newMessages = [message, ...message];
-    setMessages(newMessages);
-  }
-
   return (
     <main className="container-fluid">
       <section className="current-user">
