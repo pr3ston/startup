@@ -2,6 +2,14 @@ import React from "react";
 import "./about-styles.css";
 
 export function About() {
+  const [quote, setQuote] = React.useState("Loading...");
+  const [quoteAuthor, setQuoteAuthor] = React.useState("unknown");
+
+  React.useEffect(() => {
+    setQuote("This is an inspirational quote");
+    setQuoteAuthor("Preston Viloria");
+  }, []);
+
   return (
     <main className="about-main">
       <img width="400px" src="/yapp.png" alt="Yapp Logo" />
@@ -24,8 +32,8 @@ export function About() {
       </strong>
       <br />
       <div id="quote">
-        <div>This is an inspiration quote.</div>
-        <div>- Preston Viloria</div>
+        <div>{quote}</div>
+        <div>- {quoteAuthor}</div>
       </div>
     </main>
   );
