@@ -13,6 +13,7 @@ const eveChannel = new channel("Eve", "Good morning!", "10:30 AM", []);
 
 let channelList = [aliceChannel, charlieChannel, eveChannel];
 
+// In the future, there wouldn't be any need to pass in parameters. Just need to call the function and it would return the list of channels
 function getChannels(channels) {
   let userChannels = [];
 
