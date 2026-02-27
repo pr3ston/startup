@@ -1,7 +1,7 @@
 import React from "react";
 import "./channel-styles.css";
 import Button from "react-bootstrap/Button";
-import { getChannels, getCurrentMessages } from "./messageHandler";
+import { getChannels, getCurentMessages } from "./messageHandler";
 
 export function Channels({ userName }) {
   class channel {
@@ -13,7 +13,7 @@ export function Channels({ userName }) {
     }
   }
 
-  // Hard coding data for now; Will erase when I can actually fetch info
+  // // Hard coding data for now; Will erase when I can actually fetch info
   const aliceChannel = new channel("Alice", "How are you?", "10:30 AM", []);
   const charlieChannel = new channel(
     "Charlie",
@@ -22,6 +22,8 @@ export function Channels({ userName }) {
     [],
   );
   const eveChannel = new channel("Eve", "Good morning!", "10:30 AM", []);
+
+  let channelList = [aliceChannel, charlieChannel, eveChannel];
 
   let channels = getChannels(channelList);
   let currentChannelMessages = getCurentMessages(channels);

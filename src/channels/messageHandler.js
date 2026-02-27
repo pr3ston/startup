@@ -13,11 +13,11 @@
 // const charlieChannel = new channel("Charlie", "See you later!", "10:30 AM", []);
 // const eveChannel = new channel("Eve", "Good morning!", "10:30 AM", []);
 
-let channelList = [aliceChannel, charlieChannel, eveChannel];
+//let channelList = [aliceChannel, charlieChannel, eveChannel];
 
 // This function will be used to get the channel information from the DB
 // In the future, there wouldn't be any need to pass in parameters. Just need to call the function and it would return the list of channels
-function getChannels(channels) {
+export function getChannels(channels) {
   let userChannels = [];
 
   for (const channelInfo of channels) {
@@ -37,7 +37,7 @@ function getChannels(channels) {
 // I need to determine how I want to keep track of which user is selected in order to know what messages to get.
 // I also need to add a create channel button, will work on that later. They would need to know the username (unique) which would be checked on the db
 
-function getCurentMessages(channels) {
+export function getCurentMessages(channels) {
   if (localStorage.getItem("fromUser") != "unknown") {
     for (let i = 0; i++; i < channels.length()) {
       if (channels[i].fromUser == localStorage.getItem("fromUser")) {
