@@ -24,9 +24,9 @@ export function getChannels(channels) {
     userChannels.push(channelInfo);
   }
 
-  userChannels[0]
-    ? localStorage.setItem("fromUser", userChannels[0].fromUser)
-    : localStorage.setItem("fromUser", "unknown");
+  //   userChannels[0]
+  //     ? localStorage.setItem("fromUser", userChannels[0].fromUser)
+  //     : localStorage.setItem("fromUser", "unknown");
 
   return userChannels;
 }

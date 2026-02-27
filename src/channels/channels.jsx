@@ -31,8 +31,11 @@ export function Channels({ userName }) {
   let channelList = [aliceChannel, charlieChannel, eveChannel];
 
   const [channels, setChannels] = useState(() => getChannels(channelList));
-  let currentChannelMessages = getCurentMessages(channels);
 
+  const [selectedChannel, setSelectedChannel] = useState(channels[0]);
+  const [messageToSend, setMessageToSend] = useState("");
+
+  const currentChannelMessages = selectedChannel.messages;
   // Next to do: Find out how to get each of the channels to display on the panel.
   return (
     <main className="container-fluid">
@@ -43,7 +46,7 @@ export function Channels({ userName }) {
       <section className="channel-list">
         <h2>Channels</h2>
         {channels.map((channel, index) => (
-          <article key={index}>
+          <article key={index} onClick={() => setSelectedChannel(channel)}>
             <h3>{channel.fromUser}</h3>
             <p>
               <strong>Last message:</strong> {channel.fromUser}:{" "}
@@ -55,7 +58,7 @@ export function Channels({ userName }) {
       </section>
       <section className="current-channel">
         <span>
-          <h2>{localStorage.getItem("fromUser")}</h2> online
+          <h2>{selectedChannel.fromUser}</h2>
         </span>
         {currentChannelMessages.map((message, index) => (
           <p
@@ -79,12 +82,7 @@ export function Channels({ userName }) {
 }
 
 // TODO: Change the button to be like that of the unauthenticated.jsx
-// <p className="message other">
-//   <strong>Alice:</strong> Hello everyone!<time> 10:30 AM</time>
-// </p>
-// <p className="message self">
-//   <strong>You:</strong> Hi Alice!<time> 10:30 AM</time>
-// </p>
-// <p className="message other">
-//   <strong>Alice:</strong> How are you?<time> 10:30 AM</time>
-// </p>
+// TODO: Make the Create button functional
+// TODO: Make the send button functional
+// TODO: Change the fromUser in local storage to match the card that's selected
+// TODO: Finish the sendMessage function
