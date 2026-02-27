@@ -39,13 +39,14 @@ export function getChannels(channels) {
 
 export function getCurentMessages(channels) {
   if (localStorage.getItem("fromUser") != "unknown") {
-    for (let i = 0; i++; i < channels.length()) {
+    for (let i = 0; i < channels.length; i++) {
       if (channels[i].fromUser == localStorage.getItem("fromUser")) {
         let messages = channels[i].messages;
         return messages;
       }
     }
   }
+  return [];
 }
 
 //let currentChannelMessages = getCurentMessages(channels);

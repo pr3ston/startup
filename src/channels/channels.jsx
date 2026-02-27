@@ -15,7 +15,11 @@ export function Channels({ userName }) {
   }
 
   // // Hard coding data for now; Will erase when I can actually fetch info
-  const aliceChannel = new channel("Alice", "How are you?", "10:30 AM", []);
+  const aliceChannel = new channel("Alice", "How are you?", "10:30 AM", [
+    { fromUser: "Alice", message: "Hello everyone!", time: "10:30 AM" },
+    { fromUser: "test", message: "Hi Alice!", time: "10:30 AM" },
+    { fromUser: "Alice", message: "How are you?", time: "10:30 AM" },
+  ]);
   const charlieChannel = new channel(
     "Charlie",
     "See you later!",
@@ -53,15 +57,18 @@ export function Channels({ userName }) {
         <span>
           <h2>{localStorage.getItem("fromUser")}</h2> online
         </span>
-        <p className="message other">
-          <strong>Alice:</strong> Hello everyone!<time> 10:30 AM</time>
-        </p>
-        <p className="message self">
-          <strong>You:</strong> Hi Alice!<time> 10:30 AM</time>
-        </p>
-        <p className="message other">
-          <strong>Alice:</strong> How are you?<time> 10:30 AM</time>
-        </p>
+        {currentChannelMessages.map((message, index) => (
+          <p
+            key={index}
+            className={
+              message.fromUser == userName ? "message self" : "message other"
+            }
+          >
+            <strong>{message.fromUser}: </strong>
+            {message.message}
+            <time>{message.time}</time>
+          </p>
+        ))}
         <form method="post" action="channels.html">
           <input type="text" placeholder="Type your message here..." />
           <button type="submit">Send</button>
@@ -72,3 +79,12 @@ export function Channels({ userName }) {
 }
 
 // TODO: Change the button to be like that of the unauthenticated.jsx
+// <p className="message other">
+//   <strong>Alice:</strong> Hello everyone!<time> 10:30 AM</time>
+// </p>
+// <p className="message self">
+//   <strong>You:</strong> Hi Alice!<time> 10:30 AM</time>
+// </p>
+// <p className="message other">
+//   <strong>Alice:</strong> How are you?<time> 10:30 AM</time>
+// </p>
