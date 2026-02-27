@@ -93,26 +93,4 @@ Setting up Vite and React was pretty simple. I had a bit of trouble because of c
 
 ## React Part 2: Reactivity
 
-This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
-
-Handling the toggling of the checkboxes was particularly interesting.
-
-```jsx
-<div className="input-group sound-button-container">
-  {calmSoundTypes.map((sound, index) => (
-    <div key={index} className="form-check form-switch">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        value={sound}
-        id={sound}
-        onChange={() => togglePlay(sound)}
-        checked={selectedSounds.includes(sound)}
-      ></input>
-      <label className="form-check-label" htmlFor={sound}>
-        {sound}
-      </label>
-    </div>
-  ))}
-</div>
-```
+This was honestly a bit tough. I had to think of how I wanted to go about retreiving data from a database and I had to find out how to handle which channel data to display. That took the most time. I am still yet to implement button functionality that is supposed to create a channel and send a message. I would have to wait until I have a database to work with. 
