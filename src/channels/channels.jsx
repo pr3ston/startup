@@ -36,7 +36,7 @@ export function Channels({ userName }) {
   const [messageToSend, setMessageToSend] = useState("");
 
   const currentChannelMessages = selectedChannel.messages;
-  // Next to do: Find out how to get each of the channels to display on the panel.
+
   return (
     <main className="container-fluid">
       <section className="current-user">
@@ -55,6 +55,7 @@ export function Channels({ userName }) {
             <time>{channel.lastTime}</time>
           </article>
         ))}
+        <Button>Create</Button>
       </section>
       <section className="current-channel">
         <span>
@@ -73,7 +74,11 @@ export function Channels({ userName }) {
           </p>
         ))}
         <form method="post" action="channels.html">
-          <input type="text" placeholder="Type your message here..." />
+          <input
+            type="text"
+            placeholder="Type your message here..."
+            onChange={(e) => setMessageToSend(e.target.value)}
+          />
           <button type="submit">Send</button>
         </form>
       </section>
@@ -81,8 +86,7 @@ export function Channels({ userName }) {
   );
 }
 
-// TODO: Change the button to be like that of the unauthenticated.jsx
+// TODO: Change the send button to be like that of the unauthenticated.jsx
 // TODO: Make the Create button functional
 // TODO: Make the send button functional
-// TODO: Change the fromUser in local storage to match the card that's selected
 // TODO: Finish the sendMessage function
