@@ -1,7 +1,7 @@
 import React from "react";
 import "./channel-styles.css";
 import Button from "react-bootstrap/Button";
-import { getChannels, getCurentMessages } from "./messageHandler";
+import { getChannels } from "./messageHandler";
 import { useState } from "react";
 
 export function Channels({ userName }) {
@@ -77,6 +77,7 @@ export function Channels({ userName }) {
           <input
             type="text"
             placeholder="Type your message here..."
+            value={messageToSend}
             onChange={(e) => setMessageToSend(e.target.value)}
           />
           <button type="submit">Send</button>
