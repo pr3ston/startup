@@ -2,6 +2,7 @@ import React from "react";
 import "./channel-styles.css";
 import Button from "react-bootstrap/Button";
 import { getChannels, getCurentMessages } from "./messageHandler";
+import { useState } from "react";
 
 export function Channels({ userName }) {
   class channel {
@@ -25,7 +26,7 @@ export function Channels({ userName }) {
 
   let channelList = [aliceChannel, charlieChannel, eveChannel];
 
-  let channels = getChannels(channelList);
+  const [channels, setChannels] = useState(() => getChannels(channelList));
   let currentChannelMessages = getCurentMessages(channels);
 
   // Next to do: Find out how to get each of the channels to display on the panel.
@@ -50,7 +51,7 @@ export function Channels({ userName }) {
       </section>
       <section className="current-channel">
         <span>
-          <h2>Alice</h2> online
+          <h2>{localStorage.getItem("fromUser")}</h2> online
         </span>
         <p className="message other">
           <strong>Alice:</strong> Hello everyone!<time> 10:30 AM</time>

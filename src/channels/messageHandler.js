@@ -49,3 +49,5 @@ export function getCurentMessages(channels) {
 }
 
 //let currentChannelMessages = getCurentMessages(channels);
+
+// also create an event handler that switches the username based on which channel is selected
