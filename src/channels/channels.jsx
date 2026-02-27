@@ -37,27 +37,16 @@ export function Channels({ userName }) {
       </section>
       <section className="channel-list">
         <h2>Channels</h2>
-        <article>
-          <h3>Alice</h3>
-          <p>
-            <strong>Last message:</strong> Alice: How are you?
-          </p>
-          <time> 10:30 AM</time>
-        </article>
-        <article>
-          <h3>Charlie</h3>
-          <p>
-            <strong>Last message:</strong> Charlie: See you later!
-          </p>
-          <time> 10:30 AM</time>
-        </article>
-        <article>
-          <h3>Eve</h3>
-          <p>
-            <strong>Last message:</strong> Eve: Good morning!
-          </p>
-          <time> 10:30 AM</time>
-        </article>
+        {channels.map((channel, index) => (
+          <article key={index}>
+            <h3>{channel.fromUser}</h3>
+            <p>
+              <strong>Last message:</strong> {channel.fromUser}:{" "}
+              {channel.lastMessage}
+            </p>
+            <time>{channel.lastTime}</time>
+          </article>
+        ))}
       </section>
       <section className="current-channel">
         <span>
