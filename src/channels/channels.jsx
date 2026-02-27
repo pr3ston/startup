@@ -1,8 +1,32 @@
 import React from "react";
 import "./channel-styles.css";
 import Button from "react-bootstrap/Button";
+import { getChannels, getCurrentMessages } from "./messageHandler";
 
 export function Channels({ userName }) {
+  class channel {
+    constructor(fromUser, lastMessage, lastTime, messages) {
+      this.fromUser = fromUser;
+      this.lastMessage = lastMessage;
+      this.lastTime = lastTime;
+      this.messages = messages;
+    }
+  }
+
+  // Hard coding data for now; Will erase when I can actually fetch info
+  const aliceChannel = new channel("Alice", "How are you?", "10:30 AM", []);
+  const charlieChannel = new channel(
+    "Charlie",
+    "See you later!",
+    "10:30 AM",
+    [],
+  );
+  const eveChannel = new channel("Eve", "Good morning!", "10:30 AM", []);
+
+  let channels = getChannels(channelList);
+  let currentChannelMessages = getCurentMessages(channels);
+
+  // Next to do: Find out how to get each of the channels to display on the panel.
   return (
     <main className="container-fluid">
       <section className="current-user">
