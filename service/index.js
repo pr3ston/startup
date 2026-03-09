@@ -19,6 +19,7 @@ app.use(express.static("public"));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+// Create a new user
 apiRouter.post("/auth/create", async (req, res) => {
   if (await findUser("email", req.body.email)) {
     res.status(409).send({ msg: "Existing user" });
@@ -30,7 +31,7 @@ apiRouter.post("/auth/create", async (req, res) => {
   }
 });
 
-// GetAuth login an existing user
+// login an existing user
 apiRouter.post("/auth/login", async (req, res) => {
   const user = await findUser("email", req.body.email);
   if (user) {
@@ -44,7 +45,7 @@ apiRouter.post("/auth/login", async (req, res) => {
   res.status(401).send({ msg: "Unauthorized" });
 });
 
-// DeleteAuth logout a user
+// logout a user
 apiRouter.delete("/auth/logout", async (req, res) => {
   const user = await findUser("token", req.cookies[authCookieName]);
   if (user) {
@@ -54,6 +55,11 @@ apiRouter.delete("/auth/logout", async (req, res) => {
   res.status(204).end();
 });
 
+//
+
+///////////////////////////
+//// Helper functions /////
+///////////////////////////
 const verifyAuth = async (req, res, next) => {
   const user = await findUser("token", req.cookies[authCookieName]);
   if (user) {
@@ -91,3 +97,7 @@ function setAuthCookie(res, authToken) {
     sameSite: "strict",
   });
 }
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});

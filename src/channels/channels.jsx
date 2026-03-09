@@ -30,6 +30,7 @@ export function Channels({ userName }) {
 
   let channelList = [aliceChannel, charlieChannel, eveChannel];
 
+  // getChannels will eventually fetch the channels from the backend, but for now it just returns the hard coded channels
   const [channels, setChannels] = useState(() => getChannels(channelList));
 
   const [selectedChannel, setSelectedChannel] = useState(channels[0]);
