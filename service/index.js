@@ -55,7 +55,8 @@ apiRouter.delete("/auth/logout", async (req, res) => {
   res.status(204).end();
 });
 
-//
+// TODO: add get user channels endpoint
+// TODO: add post message endpoint
 
 ///////////////////////////
 //// Helper functions /////
