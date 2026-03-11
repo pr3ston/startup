@@ -160,6 +160,31 @@ apiRouter.post(
 );
 
 // TODO: add create channel endpoint
+// When calling this endpint, user must provide the fromUser, lastMessage, lastTime. Messages will be the same as lastMessage
+apiRouter.post("/channels", verifyAuth, async (req, res) => {
+  const user = await findUser("token", req.cookies[authCookieName]);
+  const fromUser = req.body.fromUser;
+  const lastMessage = req.body.lastMessage;
+  const lastTime = req.body.lastTime;
+  const messages = [
+    {
+      fromUser: fromUser,
+      message: lastMessage,
+      time: lastTime,
+    },
+  ];
+  const newChannel = new channel(
+    channelList.length,
+    user.email,
+    fromUser,
+    lastMessage,
+    lastTime,
+    messages,
+  );
+  channelList.push(newChannel);
+  res.status(201).send({ msg: "Channel created" });
+});
+
 // TODO: find a way to update the channel list in real time when a new message is posted or a new channel is created, maybe using websockets or long polling?
 
 ///////////////////////////
