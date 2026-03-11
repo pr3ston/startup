@@ -7,7 +7,8 @@ const app = express();
 const authCookieName = "token";
 
 class channel {
-  constructor(fromUser, lastMessage, lastTime, messages) {
+  constructor(owner, fromUser, lastMessage, lastTime, messages) {
+    this.owner = owner;
     this.fromUser = fromUser;
     this.lastMessage = lastMessage;
     this.lastTime = lastTime;
@@ -15,13 +16,19 @@ class channel {
   }
 }
 
-const aliceChannel = new channel("Alice", "How are you?", "10:30 AM", [
+const aliceChannel = new channel("test", "Alice", "How are you?", "10:30 AM", [
   { fromUser: "Alice", message: "Hello everyone!", time: "10:30 AM" },
   { fromUser: "test", message: "Hi Alice!", time: "10:30 AM" },
   { fromUser: "Alice", message: "How are you?", time: "10:30 AM" },
 ]);
-const charlieChannel = new channel("Charlie", "See you later!", "10:30 AM", []);
-const eveChannel = new channel("Eve", "Good morning!", "10:30 AM", []);
+const charlieChannel = new channel(
+  "test",
+  "Charlie",
+  "See you later!",
+  "10:30 AM",
+  [],
+);
+const eveChannel = new channel("test", "Eve", "Good morning!", "10:30 AM", []);
 
 let channelList = [aliceChannel, charlieChannel, eveChannel];
 let users = [];
@@ -73,15 +80,6 @@ apiRouter.delete("/auth/logout", async (req, res) => {
   res.status(204).end();
 });
 
-// TODO: add get users endpoint for testing purposes, remove before deployment
-// TODO: add get user channels endpoint
-// TODO: add post message endpoint
-// TODO: add create channel endpoint
-// TODO: find a way to update the channel list in real time when a new message is posted or a new channel is created, maybe using websockets or long polling?
-
-///////////////////////////
-//// Helper functions /////
-///////////////////////////
 const verifyAuth = async (req, res, next) => {
   const user = await findUser("token", req.cookies[authCookieName]);
   if (user) {
@@ -91,6 +89,31 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
+// TODO: add get users endpoint for testing purposes, remove before deployment
+apiRouter.get("/users", verifyAuth, async (req, res) => {
+  res.send(users);
+});
+
+// TODO: add get user channels endpoint
+// THIS WOULD NEED TO BE EDITED WHEN THE DB IS IMPLEMENTED TO CHECK THE USER ON THE DB END
+apiRouter.get("/channels", verifyAuth, async (req, res) => {
+  const user = await findUser("token", req.cookies[authCookieName]);
+  let userChannels = [];
+  channelList.forEach((channel) => {
+    if (channel.owner === user.email) {
+      userChannels.push(channel);
+    }
+  });
+  res.send(userChannels);
+});
+
+// TODO: add post message endpoint
+// TODO: add create channel endpoint
+// TODO: find a way to update the channel list in real time when a new message is posted or a new channel is created, maybe using websockets or long polling?
+
+///////////////////////////
+//// Helper functions /////
+///////////////////////////
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 

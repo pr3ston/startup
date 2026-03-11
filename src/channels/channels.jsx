@@ -5,30 +5,30 @@ import { getChannels } from "./messageHandler";
 import { useState } from "react";
 
 export function Channels({ userName }) {
-  class channel {
-    constructor(fromUser, lastMessage, lastTime, messages) {
-      this.fromUser = fromUser;
-      this.lastMessage = lastMessage;
-      this.lastTime = lastTime;
-      this.messages = messages;
-    }
-  }
+  // class channel {
+  //   constructor(fromUser, lastMessage, lastTime, messages) {
+  //     this.fromUser = fromUser;
+  //     this.lastMessage = lastMessage;
+  //     this.lastTime = lastTime;
+  //     this.messages = messages;
+  //   }
+  // }
 
   // // Hard coding data for now; Will erase when I can actually fetch info
-  const aliceChannel = new channel("Alice", "How are you?", "10:30 AM", [
-    { fromUser: "Alice", message: "Hello everyone!", time: "10:30 AM" },
-    { fromUser: "test", message: "Hi Alice!", time: "10:30 AM" },
-    { fromUser: "Alice", message: "How are you?", time: "10:30 AM" },
-  ]);
-  const charlieChannel = new channel(
-    "Charlie",
-    "See you later!",
-    "10:30 AM",
-    [],
-  );
-  const eveChannel = new channel("Eve", "Good morning!", "10:30 AM", []);
+  // const aliceChannel = new channel("Alice", "How are you?", "10:30 AM", [
+  //   { fromUser: "Alice", message: "Hello everyone!", time: "10:30 AM" },
+  //   { fromUser: "test", message: "Hi Alice!", time: "10:30 AM" },
+  //   { fromUser: "Alice", message: "How are you?", time: "10:30 AM" },
+  // ]);
+  // const charlieChannel = new channel(
+  //   "Charlie",
+  //   "See you later!",
+  //   "10:30 AM",
+  //   [],
+  // );
+  // const eveChannel = new channel("Eve", "Good morning!", "10:30 AM", []);
 
-  let channelList = [aliceChannel, charlieChannel, eveChannel];
+  // let channelList = [aliceChannel, charlieChannel, eveChannel];
 
   // getChannels will eventually fetch the channels from the backend, but for now it just returns the hard coded channels
   const [channels, setChannels] = useState(() => getChannels(channelList));
