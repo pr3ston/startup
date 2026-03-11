@@ -6,6 +6,24 @@ const app = express();
 
 const authCookieName = "token";
 
+class channel {
+  constructor(fromUser, lastMessage, lastTime, messages) {
+    this.fromUser = fromUser;
+    this.lastMessage = lastMessage;
+    this.lastTime = lastTime;
+    this.messages = messages;
+  }
+}
+
+const aliceChannel = new channel("Alice", "How are you?", "10:30 AM", [
+  { fromUser: "Alice", message: "Hello everyone!", time: "10:30 AM" },
+  { fromUser: "test", message: "Hi Alice!", time: "10:30 AM" },
+  { fromUser: "Alice", message: "How are you?", time: "10:30 AM" },
+]);
+const charlieChannel = new channel("Charlie", "See you later!", "10:30 AM", []);
+const eveChannel = new channel("Eve", "Good morning!", "10:30 AM", []);
+
+let channelList = [aliceChannel, charlieChannel, eveChannel];
 let users = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -55,8 +73,11 @@ apiRouter.delete("/auth/logout", async (req, res) => {
   res.status(204).end();
 });
 
+// TODO: add get users endpoint for testing purposes, remove before deployment
 // TODO: add get user channels endpoint
 // TODO: add post message endpoint
+// TODO: add create channel endpoint
+// TODO: find a way to update the channel list in real time when a new message is posted or a new channel is created, maybe using websockets or long polling?
 
 ///////////////////////////
 //// Helper functions /////
