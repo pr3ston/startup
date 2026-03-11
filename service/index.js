@@ -7,7 +7,8 @@ const app = express();
 const authCookieName = "token";
 
 class channel {
-  constructor(owner, fromUser, lastMessage, lastTime, messages) {
+  constructor(id, owner, fromUser, lastMessage, lastTime, messages) {
+    this.id = id;
     this.owner = owner;
     this.fromUser = fromUser;
     this.lastMessage = lastMessage;
@@ -16,19 +17,34 @@ class channel {
   }
 }
 
-const aliceChannel = new channel("test", "Alice", "How are you?", "10:30 AM", [
-  { fromUser: "Alice", message: "Hello everyone!", time: "10:30 AM" },
-  { fromUser: "test", message: "Hi Alice!", time: "10:30 AM" },
-  { fromUser: "Alice", message: "How are you?", time: "10:30 AM" },
-]);
+const aliceChannel = new channel(
+  0,
+  "test",
+  "Alice",
+  "How are you?",
+  "10:30 AM",
+  [
+    { fromUser: "Alice", message: "Hello everyone!", time: "10:30 AM" },
+    { fromUser: "test", message: "Hi Alice!", time: "10:30 AM" },
+    { fromUser: "Alice", message: "How are you?", time: "10:30 AM" },
+  ],
+);
 const charlieChannel = new channel(
+  1,
   "test",
   "Charlie",
   "See you later!",
   "10:30 AM",
   [],
 );
-const eveChannel = new channel("test", "Eve", "Good morning!", "10:30 AM", []);
+const eveChannel = new channel(
+  2,
+  "test",
+  "Eve",
+  "Good morning!",
+  "10:30 AM",
+  [],
+);
 
 let channelList = [aliceChannel, charlieChannel, eveChannel];
 let users = [];
@@ -108,6 +124,41 @@ apiRouter.get("/channels", verifyAuth, async (req, res) => {
 });
 
 // TODO: add post message endpoint
+// THIS WOULD NEED TO BE EDITED WHEN THE DB IS IMPLEMENTED TO CHECK THE USER ON THE DB END
+apiRouter.post(
+  "/channels/:channelId/messages",
+  verifyAuth,
+  async (req, res) => {
+    const user = await findUser("token", req.cookies[authCookieName]);
+    const channelId = req.params.channelId;
+    const message = req.body.message;
+    let userChannels = [];
+    channelList.forEach((channel) => {
+      if (channel.owner === user.email) {
+        userChannels.push(channel);
+      }
+    });
+
+    let channelToUpdate = null;
+    userChannels.forEach((channel) => {
+      if (channel.id == channelId) {
+        channelToUpdate = channel;
+      }
+    });
+
+    if (channelToUpdate) {
+      channelToUpdate.messages.push({
+        fromUser: user.email,
+        message: message,
+        time: new Date().toLocaleTimeString(),
+      });
+      res.status(201).send({ msg: "Message posted" });
+    } else {
+      res.status(404).send({ msg: "Channel not found" });
+    }
+  },
+);
+
 // TODO: add create channel endpoint
 // TODO: find a way to update the channel list in real time when a new message is posted or a new channel is created, maybe using websockets or long polling?
 
