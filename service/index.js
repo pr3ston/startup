@@ -5,7 +5,7 @@ const uuid = require("uuid");
 const app = express();
 const cors = require("cors");
 
-app.use(cors()); // Allow all origins
+app.use(cors({ origin: "http://localhost:5173", credentials: true })); // Allow all origins
 
 const authCookieName = "token";
 

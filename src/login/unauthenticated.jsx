@@ -23,9 +23,11 @@ export function Unauthenticated(props) {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
+      credentials: "include",
     });
     if (response?.status === 200) {
       localStorage.setItem("userName", userName);
+      localStorage.setItem("token", response.token);
       props.onLogin(userName);
     } else {
       const body = await response.json();
