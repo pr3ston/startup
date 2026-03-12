@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./channel-styles.css";
 import Button from "react-bootstrap/Button";
 import { getChannels } from "./messageHandler";
@@ -31,13 +31,26 @@ export function Channels({ userName }) {
   // let channelList = [aliceChannel, charlieChannel, eveChannel];
 
   // getChannels will eventually fetch the channels from the backend, but for now it just returns the hard coded channels
-  const [channels, setChannels] = useState([]); //getChannels(channelList));
 
-  console.log(channels);
-  const [selectedChannel, setSelectedChannel] = useState(channels[0]);
+  const [channels, setChannels] = useState([]);
+  const [selectedChannel, setSelectedChannel] = useState(null);
   const [messageToSend, setMessageToSend] = useState("");
+  const [currentChannelMessages, setCurrentChannelMessages] = useState([]);
 
-  const currentChannelMessages = selectedChannel.messages;
+  useEffect(() => {
+    async function getChannels() {
+      const response = await fetch("http://localhost:4000/api/channels", {
+        credentials: "include",
+      });
+      const data = await response.json();
+      setChannels(data);
+      if (data.length > 0) {
+        setSelectedChannel(data[0]);
+        setCurrentChannelMessages(data[0].messages);
+      }
+    }
+    getChannels();
+  }, []);
 
   return (
     <main className="container-fluid">
@@ -48,7 +61,13 @@ export function Channels({ userName }) {
       <section className="channel-list">
         <h2>Channels</h2>
         {channels.map((channel, index) => (
-          <article key={index} onClick={() => setSelectedChannel(channel)}>
+          <article
+            key={index}
+            onClick={() => {
+              setSelectedChannel(channel);
+              setCurrentChannelMessages(channel.messages);
+            }}
+          >
             <h3>{channel.fromUser}</h3>
             <p>
               <strong>Last message:</strong> {channel.fromUser}:{" "}
@@ -61,20 +80,24 @@ export function Channels({ userName }) {
       </section>
       <section className="current-channel">
         <span>
-          <h2>{selectedChannel.fromUser}</h2>
+          <h2>{selectedChannel?.fromUser}</h2>
         </span>
-        {currentChannelMessages.map((message, index) => (
-          <p
-            key={index}
-            className={
-              message.fromUser == userName ? "message self" : "message other"
-            }
-          >
-            <strong>{message.fromUser}: </strong>
-            {message.message}
-            <time>{message.time}</time>
-          </p>
-        ))}
+        {currentChannelMessages.length === 0 ? (
+          <p>Nothing to display</p>
+        ) : (
+          currentChannelMessages.map((message, index) => (
+            <p
+              key={index}
+              className={
+                message.fromUser == userName ? "message self" : "message other"
+              }
+            >
+              <strong>{message.fromUser}: </strong>
+              {message.message}
+              <time>{message.time}</time>
+            </p>
+          ))
+        )}
         <form method="post" action="channels.html">
           <input
             type="text"
