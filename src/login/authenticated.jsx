@@ -8,6 +8,10 @@ export function Authenticated(props) {
 
   function logout() {
     localStorage.removeItem("userName");
+    let response = fetch(`http://localhost:4000/api/auth/logout`, {
+      method: "delete",
+      credentials: "include",
+    });
     props.onLogout();
   }
 

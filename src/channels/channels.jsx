@@ -31,12 +31,7 @@ export function Channels({ userName }) {
   // let channelList = [aliceChannel, charlieChannel, eveChannel];
 
   // getChannels will eventually fetch the channels from the backend, but for now it just returns the hard coded channels
-  const [channels, setChannels] = useState(
-    async () =>
-      await fetch("http://localhost:4000/api/channels", {
-        credentials: "include",
-      }),
-  ); //getChannels(channelList));
+  const [channels, setChannels] = useState([]); //getChannels(channelList));
 
   console.log(channels);
   const [selectedChannel, setSelectedChannel] = useState(channels[0]);
