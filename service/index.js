@@ -188,6 +188,12 @@ apiRouter.post("/channels", verifyAuth, async (req, res) => {
   res.status(201).send({ msg: "Channel created" });
 });
 
+apiRouter.get("/quote", async (req, res) => {
+  const response = await fetch("http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en")
+  const data = await response.json()
+  //console.log(data)
+  res.status(200).send(data)
+})
 // TODO: find a way to update the channel list in real time when a new message is posted or a new channel is created, maybe using websockets or long polling?
 
 ///////////////////////////

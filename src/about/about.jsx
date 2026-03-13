@@ -6,8 +6,15 @@ export function About() {
   const [quoteAuthor, setQuoteAuthor] = React.useState("unknown");
 
   React.useEffect(() => {
-    setQuote("This is an inspirational quote");
-    setQuoteAuthor("Preston Viloria");
+    async function getQuote() {
+      const response = await fetch('/api/quote')
+      const data = await response.json()
+      setQuote(data.quoteText)
+      setQuoteAuthor(data.quoteAuthor)
+    }
+    getQuote()
+    // setQuote("This is an inspirational quote");
+    // setQuoteAuthor("Preston Viloria");
   }, []);
 
   return (
