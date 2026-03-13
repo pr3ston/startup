@@ -49,6 +49,33 @@ export function Channels({ userName }) {
     setChannels(data);
   }
 
+  async function sendMessage(){
+    const response = await fetch("http://localhost:4000/api/channels/messages", {
+      method: "POST",
+      credentials: "include", 
+      body: JSON.stringify({
+        channelId: selectedChannel.id,
+        message: messageToSend,
+      }),
+      headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      }
+    });
+    const response2 = await fetch("http://localhost:4000/api/channels", {
+      credentials: "include",
+    });
+    const data = await response2.json();
+    console.log(data)
+    setChannels(data);
+    const updatedChannel = data.find((channel) => channel.id === selectedChannel.id);
+    if (updatedChannel) {
+      setSelectedChannel(updatedChannel);
+      setCurrentChannelMessages(updatedChannel.messages);
+    }
+
+  setMessageToSend("");
+  }
+
   return (
     <main className="container-fluid">
       <section className="current-user">
@@ -129,15 +156,15 @@ export function Channels({ userName }) {
             </p>
           ))
         )}
-        <form method="post" action="channels.html">
+        <div className="form">
           <input
             type="text"
             placeholder="Type your message here..."
             value={messageToSend}
             onChange={(e) => setMessageToSend(e.target.value)}
           />
-          <button type="submit">Send</button>
-        </form>
+          <button onClick={() => sendMessage()} type="submit">Send</button>
+        </div>
       </section>
     </main>
   );

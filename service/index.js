@@ -129,11 +129,11 @@ apiRouter.get("/channels", verifyAuth, async (req, res) => {
 // TODO: add post message endpoint
 // THIS WOULD NEED TO BE EDITED WHEN THE DB IS IMPLEMENTED TO CHECK THE USER ON THE DB END
 apiRouter.post(
-  "/channels/:channelId/messages",
+  "/channels/messages",
   verifyAuth,
   async (req, res) => {
     const user = await findUser("token", req.cookies[authCookieName]);
-    const channelId = req.params.channelId;
+    const channelId = req.body.channelId;
     const message = req.body.message;
     let userChannels = [];
     channelList.forEach((channel) => {
