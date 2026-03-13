@@ -94,3 +94,7 @@ Setting up Vite and React was pretty simple. I had a bit of trouble because of c
 ## React Part 2: Reactivity
 
 This was honestly a bit tough. I had to think of how I wanted to go about retreiving data from a database and I had to find out how to handle which channel data to display. That took the most time. I am still yet to implement button functionality that is supposed to create a channel and send a message. I would have to wait until I have a database to work with. 
+
+## Service
+
+This took a while but was fun overall. It was a good refresher on how CORS and middleware are implemented. I ran into some issues with trying to update information on my frontend. 
