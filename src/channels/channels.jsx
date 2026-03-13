@@ -10,6 +10,10 @@ export function Channels({ userName }) {
   const [messageToSend, setMessageToSend] = useState("");
   const [currentChannelMessages, setCurrentChannelMessages] = useState([]);
 
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [newChannelUser, setNewChannelUser] = useState("");
+  const [newChannelMessage, setNewChannelMessage] = useState("");
+
   useEffect(() => {
     async function getChannels() {
       const response = await fetch("http://localhost:4000/api/channels", {
@@ -66,7 +70,41 @@ export function Channels({ userName }) {
             <time>{channel.lastTime}</time>
           </article>
         ))}
-        <Button>Create</Button>
+        <Button onClick={() => setShowCreateForm(true)}>Create</Button>
+        {showCreateForm && (
+          <div className="create-channel-popup">
+            <h4>New Channel</h4>
+            <input
+              type="text"
+              placeholder="Recipient"
+              value={newChannelUser}
+              onChange={(e) => setNewChannelUser(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Message"
+              value={newChannelMessage}
+              onChange={(e) => setNewChannelMessage(e.target.value)}
+            />
+            <Button
+              variant="secondary"
+              onClick={() => setShowCreateForm(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                createChannel(newChannelUser, newChannelMessage);
+                setNewChannelUser("");
+                setNewChannelMessage("");
+                setShowCreateForm(false);
+              }}
+            >
+              Send
+            </Button>
+          </div>
+        )}
       </section>
       <section className="current-channel">
         <span>
