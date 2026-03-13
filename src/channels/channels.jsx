@@ -16,7 +16,7 @@ export function Channels({ userName }) {
 
   useEffect(() => {
     async function getChannels() {
-      const response = await fetch("http://localhost:4000/api/channels", {
+      const response = await fetch("/api/channels", {
         credentials: "include",
       });
       const data = await response.json();
@@ -30,7 +30,7 @@ export function Channels({ userName }) {
   }, []);
 
   async function createChannel(fromUser, lastMessage) {
-    const response = await fetch("http://localhost:4000/api/channels/", {
+    const response = await fetch("/api/channels/", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({
@@ -42,7 +42,7 @@ export function Channels({ userName }) {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    const response2 = await fetch("http://localhost:4000/api/channels", {
+    const response2 = await fetch("/api/channels", {
       credentials: "include",
     });
     const data = await response2.json();
@@ -50,7 +50,7 @@ export function Channels({ userName }) {
   }
 
   async function sendMessage(){
-    const response = await fetch("http://localhost:4000/api/channels/messages", {
+    const response = await fetch("/api/channels/messages", {
       method: "POST",
       credentials: "include", 
       body: JSON.stringify({
@@ -61,7 +61,7 @@ export function Channels({ userName }) {
       "Content-type": "application/json; charset=UTF-8",
       }
     });
-    const response2 = await fetch("http://localhost:4000/api/channels", {
+    const response2 = await fetch("/api/channels", {
       credentials: "include",
     });
     const data = await response2.json();
