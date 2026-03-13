@@ -171,7 +171,7 @@ apiRouter.post("/channels", verifyAuth, async (req, res) => {
   const lastTime = req.body.lastTime;
   const messages = [
     {
-      fromUser: fromUser,
+      fromUser: user.email,
       message: lastMessage,
       time: lastTime,
     },

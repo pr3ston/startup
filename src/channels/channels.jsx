@@ -42,8 +42,11 @@ export function Channels({ userName }) {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    const data = await response.json();
-    setChannels([...channels, data]);
+    const response2 = await fetch("http://localhost:4000/api/channels", {
+      credentials: "include",
+    });
+    const data = await response2.json();
+    setChannels(data);
   }
 
   return (
