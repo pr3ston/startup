@@ -109,9 +109,9 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // TODO: add get users endpoint for testing purposes, remove before deployment
-apiRouter.get("/users", verifyAuth, async (req, res) => {
-  res.send(users);
-});
+// apiRouter.get("/users", verifyAuth, async (req, res) => {
+//   res.send(users);
+// });
 
 // TODO: add get user channels endpoint
 // THIS WOULD NEED TO BE EDITED WHEN THE DB IS IMPLEMENTED TO CHECK THE USER ON THE DB END
