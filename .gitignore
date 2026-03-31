@@ -1,2 +1,4 @@
 production1.pem
 node_modules
+dbConfig.json
+simon-db
