@@ -42,10 +42,23 @@ async function updateUserRemoveAuth(user) {
   await userCollection.updateOne({ email: user.email }, { $unset: { token: 1 } });
 }
 
+async function getChannel(userEmail) {
+  return await messageCollection.find({users: userEmail}).toArray()
+}
+
+async function addChannel() {
+
+}
+
+async function updateChannel() {
+  
+}
+
 module.exports = {
   getUser,
   getUserByToken,
   addUser,
   updateUser,
   updateUserRemoveAuth,
+  getChannel
 };
