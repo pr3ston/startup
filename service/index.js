@@ -119,15 +119,7 @@ const verifyAuth = async (req, res, next) => {
 // THIS WOULD NEED TO BE EDITED WHEN THE DB IS IMPLEMENTED TO CHECK THE USER ON THE DB END
 apiRouter.get("/channels", verifyAuth, async (req, res) => {
   const user = await findUser("token", req.cookies[authCookieName]);
-  // let userChannels = [];
-  console.log(user.email)
   let channelList = await DB.getChannel(user.email)
-  console.log(channelList)
-  // channelList.forEach((channel) => {
-  //   if (channel.owner === user.email) {
-  //     userChannels.push(channel);
-  //   }
-  // });
   res.send(channelList);
 });
 
@@ -139,20 +131,22 @@ apiRouter.post(
   async (req, res) => {
     const user = await findUser("token", req.cookies[authCookieName]);
     const channelId = req.body.channelId;
+    console.log("ChannelID: " + channelId)
     const message = req.body.message;
-    let userChannels = [];
-    channelList.forEach((channel) => {
-      if (channel.owner === user.email) {
-        userChannels.push(channel);
-      }
-    });
+    let channelToUpdate = await DB.getChannelByID(channelId, user.email, message, new Date().toLocaleTimeString())
+    console.log(channelToUpdate)
+    // channelList.forEach((channel) => {
+    //   if (channel.owner === user.email) {
+    //     userChannels.push(channel);
+    //   }
+    // });
 
-    let channelToUpdate = null;
-    userChannels.forEach((channel) => {
-      if (channel.id == channelId) {
-        channelToUpdate = channel;
-      }
-    });
+    // let channelToUpdate = null;
+    // userChannels.forEach((channel) => {
+    //   if (channel.id == channelId) {
+    //     channelToUpdate = channel;
+    //   }
+    // });
 
     if (channelToUpdate) {
       channelToUpdate.messages.push({

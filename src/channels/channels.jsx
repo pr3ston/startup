@@ -54,7 +54,7 @@ export function Channels({ userName }) {
       method: "POST",
       credentials: "include", 
       body: JSON.stringify({
-        channelId: selectedChannel.id,
+        channelId: selectedChannel._id,
         message: messageToSend,
       }),
       headers: {
@@ -92,9 +92,9 @@ export function Channels({ userName }) {
               setCurrentChannelMessages(channel.messages);
             }}
           >
-            <h3>{channel.fromUser}</h3>
+            <h3>{channel.users}</h3>
             <p>
-              <strong>Last message:</strong> {channel.fromUser}:{" "}
+              <strong>Last message:</strong> {channel.users}:{" "}
               {channel.lastMessage}
             </p>
             <time>{channel.lastTime}</time>

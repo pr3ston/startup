@@ -7,6 +7,8 @@ const client = new MongoClient(url);
 const db = client.db('startup');
 const userCollection = db.collection('user');
 const messageCollection = db.collection('message');
+const { ObjectId } = require("mongodb");
+
 
 (async function testConnection() {
   try {
@@ -46,12 +48,24 @@ async function getChannel(userEmail) {
   return await messageCollection.find({users: userEmail}).toArray()
 }
 
+async function getChannelByID (channelID, fromUser, message, time) {
+  return await messageCollection.findOneAndUpdate({ _id: new ObjectId(channelID) }, {
+    $push: {
+      messages: {
+        fromUser: fromUser,
+        message: message,
+        time: time
+      }
+    }
+  })
+}
+
 async function addChannel() {
 
 }
 
 async function updateChannel() {
-  
+
 }
 
 module.exports = {
@@ -60,5 +74,6 @@ module.exports = {
   addUser,
   updateUser,
   updateUserRemoveAuth,
-  getChannel
+  getChannel,
+  getChannelByID
 };
