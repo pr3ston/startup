@@ -23,6 +23,7 @@ export function Channels({ userName }) {
       setChannels(data);
       if (data.length > 0) {
         setSelectedChannel(data[0]);
+        console.log(data[0]);
         setCurrentChannelMessages(data[0].messages);
       }
     }
@@ -49,31 +50,33 @@ export function Channels({ userName }) {
     setChannels(data);
   }
 
-  async function sendMessage(){
+  async function sendMessage() {
     const response = await fetch("/api/channels/messages", {
       method: "POST",
-      credentials: "include", 
+      credentials: "include",
       body: JSON.stringify({
         channelId: selectedChannel._id,
         message: messageToSend,
       }),
       headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      }
+        "Content-type": "application/json; charset=UTF-8",
+      },
     });
     const response2 = await fetch("/api/channels", {
       credentials: "include",
     });
     const data = await response2.json();
-    console.log(data)
+    console.log("channels:" + data);
     setChannels(data);
-    const updatedChannel = data.find((channel) => channel.id === selectedChannel.id);
+    const updatedChannel = data.find(
+      (channel) => channel.id === selectedChannel.id,
+    );
     if (updatedChannel) {
       setSelectedChannel(updatedChannel);
       setCurrentChannelMessages(updatedChannel.messages);
     }
 
-  setMessageToSend("");
+    setMessageToSend("");
   }
 
   return (
@@ -92,9 +95,11 @@ export function Channels({ userName }) {
               setCurrentChannelMessages(channel.messages);
             }}
           >
-            <h3>{channel.users}</h3>
+            <h3>{channel.users.find((user) => user !== userName)}</h3>
             <p>
-              <strong>Last message:</strong> {channel.users}:{" "}
+              <strong>Last message:</strong>
+              {" \n"}
+              {channel.users.find((user) => user !== userName)}:{" "}
               {channel.lastMessage}
             </p>
             <time>{channel.lastTime}</time>
@@ -138,7 +143,7 @@ export function Channels({ userName }) {
       </section>
       <section className="current-channel">
         <span>
-          <h2>{selectedChannel?.fromUser}</h2>
+          <h2>{selectedChannel?.users.find((user) => user !== userName)}</h2>
         </span>
         {currentChannelMessages.length === 0 ? (
           <p>Nothing to display</p>
@@ -163,7 +168,9 @@ export function Channels({ userName }) {
             value={messageToSend}
             onChange={(e) => setMessageToSend(e.target.value)}
           />
-          <button onClick={() => sendMessage()} type="submit">Send</button>
+          <button onClick={() => sendMessage()} type="submit">
+            Send
+          </button>
         </div>
       </section>
     </main>
