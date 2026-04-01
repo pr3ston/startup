@@ -4,7 +4,7 @@ const express = require("express");
 const uuid = require("uuid");
 const app = express();
 const cors = require("cors");
-const DB = require('./database.js');
+const DB = require("./database.js");
 
 app.use(cors({ origin: "http://localhost:5173", credentials: true })); // Allow all origins
 
@@ -78,7 +78,7 @@ apiRouter.post("/auth/create", async (req, res) => {
 // login an existing user
 apiRouter.post("/auth/login", async (req, res) => {
   const user = await findUser("email", req.body.email);
-  console.log(user)
+  console.log(user);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
@@ -119,47 +119,48 @@ const verifyAuth = async (req, res, next) => {
 // THIS WOULD NEED TO BE EDITED WHEN THE DB IS IMPLEMENTED TO CHECK THE USER ON THE DB END
 apiRouter.get("/channels", verifyAuth, async (req, res) => {
   const user = await findUser("token", req.cookies[authCookieName]);
-  let channelList = await DB.getChannel(user.email)
+  let channelList = await DB.getChannel(user.email);
   res.send(channelList);
 });
 
 // TODO: add post message endpoint
 // THIS WOULD NEED TO BE EDITED WHEN THE DB IS IMPLEMENTED TO CHECK THE USER ON THE DB END
-apiRouter.post(
-  "/channels/messages",
-  verifyAuth,
-  async (req, res) => {
-    const user = await findUser("token", req.cookies[authCookieName]);
-    const channelId = req.body.channelId;
-    console.log("ChannelID: " + channelId)
-    const message = req.body.message;
-    let channelToUpdate = await DB.getChannelByID(channelId, user.email, message, new Date().toLocaleTimeString())
-    console.log(channelToUpdate)
-    // channelList.forEach((channel) => {
-    //   if (channel.owner === user.email) {
-    //     userChannels.push(channel);
-    //   }
-    // });
+apiRouter.post("/channels/messages", verifyAuth, async (req, res) => {
+  const user = await findUser("token", req.cookies[authCookieName]);
+  const channelId = req.body.channelId;
+  console.log("ChannelID: " + channelId);
+  const message = req.body.message;
+  let channelToUpdate = await DB.getChannelByID(
+    channelId,
+    user.email,
+    message,
+    new Date().toLocaleTimeString(),
+  );
+  console.log(channelToUpdate);
+  // channelList.forEach((channel) => {
+  //   if (channel.owner === user.email) {
+  //     userChannels.push(channel);
+  //   }
+  // });
 
-    // let channelToUpdate = null;
-    // userChannels.forEach((channel) => {
-    //   if (channel.id == channelId) {
-    //     channelToUpdate = channel;
-    //   }
-    // });
+  // let channelToUpdate = null;
+  // userChannels.forEach((channel) => {
+  //   if (channel.id == channelId) {
+  //     channelToUpdate = channel;
+  //   }
+  // });
 
-    if (channelToUpdate) {
-      channelToUpdate.messages.push({
-        fromUser: user.email,
-        message: message,
-        time: new Date().toLocaleTimeString(),
-      });
-      res.status(201).send({ msg: "Message posted" });
-    } else {
-      res.status(404).send({ msg: "Channel not found" });
-    }
-  },
-);
+  if (channelToUpdate) {
+    channelToUpdate.messages.push({
+      fromUser: user.email,
+      message: message,
+      time: new Date().toLocaleTimeString(),
+    });
+    res.status(201).send({ msg: "Message posted" });
+  } else {
+    res.status(404).send({ msg: "Channel not found" });
+  }
+});
 
 // TODO: add create channel endpoint
 // When calling this endpint, user must provide the fromUser, lastMessage, lastTime. Messages will be the same as lastMessage
@@ -175,24 +176,27 @@ apiRouter.post("/channels", verifyAuth, async (req, res) => {
       time: lastTime,
     },
   ];
-  const newChannel = new channel(
-    channelList.length,
-    user.email,
-    fromUser,
-    lastMessage,
-    lastTime,
-    messages,
-  );
-  channelList.push(newChannel);
+  let users = [];
+  users.push(fromUser);
+  users.push(user.email);
+  const newChannel = {
+    users: users,
+    lastMessage: lastMessage,
+    lastTime: lastTime,
+    messages: messages,
+  };
+  await DB.addChannel(newChannel);
   res.status(201).send({ msg: "Channel created" });
 });
 
 apiRouter.get("/quote", async (req, res) => {
-  const response = await fetch("http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en")
-  const data = await response.json()
+  const response = await fetch(
+    "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
+  );
+  const data = await response.json();
   //console.log(data)
-  res.status(200).send(data)
-})
+  res.status(200).send(data);
+});
 // TODO: find a way to update the channel list in real time when a new message is posted or a new channel is created, maybe using websockets or long polling?
 
 ///////////////////////////
@@ -214,7 +218,7 @@ async function createUser(email, password) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  if (field === 'token') {
+  if (field === "token") {
     return DB.getUserByToken(value);
   }
   return DB.getUser(value);
@@ -230,9 +234,7 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-function getUserChannels(email) {
-
-}
+function getUserChannels(email) {}
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
