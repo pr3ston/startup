@@ -69,7 +69,7 @@ export function Channels({ userName }) {
     console.log("channels:" + data);
     setChannels(data);
     const updatedChannel = data.find(
-      (channel) => channel.id === selectedChannel.id,
+      (channel) => channel._id === selectedChannel._id,
     );
     if (updatedChannel) {
       setSelectedChannel(updatedChannel);
@@ -168,7 +168,7 @@ export function Channels({ userName }) {
             value={messageToSend}
             onChange={(e) => setMessageToSend(e.target.value)}
           />
-          <button onClick={() => sendMessage()} type="submit">
+          <button onClick={() => sendMessage()} type="button">
             Send
           </button>
         </div>

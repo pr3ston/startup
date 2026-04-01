@@ -70,8 +70,6 @@ async function addChannel(channelInfo) {
   await messageCollection.insertOne(channelInfo);
 }
 
-async function updateChannel() {}
-
 module.exports = {
   getUser,
   getUserByToken,
